@@ -1,0 +1,30 @@
+{
+  "name": "drewery-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedrewery/drewery-api.git"
+  },
+  "author": "Drew Pomatti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thedrewery/drewery-api/issues"
+  },
+  "homepage": "https://github.com/thedrewery/drewery-api#readme",
+  "dependencies": {
+    "@prisma/client": "^4.7.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.15",
+    "prisma": "^4.7.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}

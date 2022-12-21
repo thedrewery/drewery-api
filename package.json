@@ -19,7 +19,9 @@
   "homepage": "https://github.com/thedrewery/drewery-api#readme",
   "dependencies": {
     "@prisma/client": "^4.7.1",
-    "express": "^4.18.2"
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.15",

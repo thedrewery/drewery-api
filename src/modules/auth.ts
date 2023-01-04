@@ -20,15 +20,15 @@ export const createJWT = (user) => {
 }
 
 export const protect = (req, res, next) => {
-    const Bearer = req.headers.authroization;
+    const bearer = req.headers.authorization;
 
-    if (!Bearer) {
+    if (!bearer) {
         res.status(401)
-        res.json({ message: 'not authroized' });
+        res.json({ message: 'not authorized' });
         return;
     }
 
-    const [, token] = Bearer.split(' ')
+    const [, token] = bearer.split(' ')
 
     if (!token) {
         res.status(401)

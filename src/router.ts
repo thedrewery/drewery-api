@@ -1,37 +1,36 @@
 import { Router } from 'express';
 import { body } from 'express-validator';
+import { createProduct, deleteProduct, getOneProduct, getUserProducts, updateProduct } from './handlers/product';
+import { createUpdate, deleteUpdate, getOneUpdate, getUserUpdates, updateUpdate } from './handlers/update';
 import { handleInputErrors } from './modules/middleware';
 
 const router = Router();
 
 
 // Product
-router.get('/product', (req, res) => {
-    res.json({message: 'hi there!'})
- })
-router.get('/product/:id', () => { })
-router.put('/product/:id', body('name').isString(), handleInputErrors, (req, res) => {
-})
-
-router.post('/product', body('name').isString(), handleInputErrors, (req, res) => { })
-router.delete('/product/:id', () => { })
+router.get('/product', getUserProducts)
+router.get('/product/:id', getOneProduct)
+router.put('/product/:id', body('name').isString(), handleInputErrors, updateProduct)
+router.post('/product', body('name').isString(), handleInputErrors, createProduct)
+router.delete('/product/:id', deleteProduct)
 
 //Update
-router.get('/update', () => { })
-router.get('/update/:id', () => { })
+router.get('/update', getUserUpdates)
+router.get('/update/:id', getOneUpdate)
 router.put('/update/:id',
     body('title').optional(),
     body('body').optional(),
-    body('status').isIn(['IN_PROGRESS', 'SHIPPED' ,'DEPRECATED']),
+    body('status').isIn(['IN_PROGRESS', 'SHIPPED' ,'DEPRECATED']).optional,
     body('version').optional(),
-    () => { }
-)
+    updateUpdate)
+
 router.post('/update',
     body('title').exists().isString,
-    body('body').exists().isString(),
-    () => { }
-)
-router.delete('/update/:id', () => { })
+    body('body').exists().isString(), 
+    body('productId').exists().isString(),
+    createUpdate)
+
+router.delete('/update/:id', deleteUpdate)
 
 //Update Point
 router.get('/updatepoint', () => { })

@@ -20,12 +20,12 @@ router.get('/update/:id', getOneUpdate)
 router.put('/update/:id',
     body('title').optional(),
     body('body').optional(),
-    body('status').isIn(['IN_PROGRESS', 'SHIPPED' ,'DEPRECATED']).optional,
+    body('status').isIn(['IN_PROGRESS', 'SHIPPED' ,'DEPRECATED']).optional(),
     body('version').optional(),
     updateUpdate)
 
 router.post('/update',
-    body('title').exists().isString,
+    body('title').exists().isString(),
     body('body').exists().isString(), 
     body('productId').exists().isString(),
     createUpdate)

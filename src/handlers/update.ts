@@ -1,7 +1,4 @@
-import { read } from 'fs'
 import prisma from '../db'
-import { getUserProducts } from './product'
-
 
 export const getOneUpdate = async (req, res) => {
     const update = await prisma.update.findUnique({
@@ -33,7 +30,7 @@ export const getUserUpdates = async (req, res) => {
 export const createUpdate = async (req, res) => {
     const product = await prisma.product.findUnique({
         where: {
-            id: req.body.id
+            id: req.body.productId
         }
     })
 
@@ -43,7 +40,11 @@ export const createUpdate = async (req, res) => {
     }
 
     const update = await prisma.update.create({
-        data: req.body
+        data: {
+            title: req.body.title,
+            body: req.body.body,
+            product: { connect: { id: product.id } }
+        }
     })
     
     res.json({data: update})

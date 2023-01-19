@@ -48,4 +48,8 @@ router.post('/updatepont',
 )
 router.delete('/updatepont/:id', () => { })
 
+router.use((err, req, res, next) => {
+    console.log(err);
+    res.json({message: 'Error caught in router handler'})
+})
 export default router;

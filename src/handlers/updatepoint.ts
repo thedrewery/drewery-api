@@ -1,16 +1,16 @@
 import prisma from '../db'
 
 export const getOneUpdatePoint = async (req, res) => {
-    const update = await prisma.updatePoint.findUnique({
+    const updatePoint = await prisma.updatePoint.findUnique({
         where: {
             id: req.params.id
         }
     })
 
-    res.json({data: update})
+    res.json({data: updatePoint})
 }
 
-//retrieves all updates from a single product from a user
+//retrieving all updatePoints from a single update from a single product from a user
 export const getUserUpdatePoints = async (req, res) => {
     const products = await prisma.product.findMany({
         where: {
@@ -38,15 +38,20 @@ export const createUpdatePoints = async (req, res) => {
         return res.json({message: 'nope!'})
     }
 
-    const update = await prisma.update.create({
-        data: {
-            title: req.body.title,
-            body: req.body.body,
-            product: { connect: { id: product.id } }
+    const update = await prisma.update.findUnique({
+        where: {
+            id: req.body.updateId
         }
     })
-    
-    res.json({data: update})
+
+    const updatePoint = await prisma.updatePoint.create({
+        data: {
+            name: req.body.name,
+            description: req.body.description,
+            updateId: req.body.updateId
+        }
+    })
+    res.json({data: updatePoint})
 }
 
 export const updateUpdatePoint = async (req, res) => {

@@ -79,6 +79,7 @@ export const updateUpdate = async (req, res) => {
 
     res.json({data: updatedUpdate})
 } 
+
 export const deleteUpdate = async (req, res) => {
     const products = await prisma.product.findMany({
         where: {

@@ -1,3 +1,5 @@
 # drewery-api
 
-API for app that allows a product manager or engineer to post product updates for users
+App Progress Management API
+
+API built for an app that allows Developers and Project Managers to track the progress of updates and new features in their products.
